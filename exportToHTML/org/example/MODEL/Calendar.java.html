@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Calendar.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Calendar.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">MODEL</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">MODEL</span><span class="s2">.</span><span class="s1">Event</span><span class="s2">.</span><span class="s1">Event</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">File</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">IOException</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">PrintWriter</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">nio</span><span class="s2">.</span><span class="s1">file</span><span class="s2">.</span><span class="s1">Files</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Calendar </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Event</span><span class="s2">&gt; </span><span class="s1">events</span><span class="s2">;</span>
+
+    <span class="s0">final static private </span><span class="s1">String OUTPUT_FILE_NAME </span><span class="s2">= </span><span class="s3">&quot;output.csv&quot;</span><span class="s2">;</span>
+    <span class="s0">final static </span><span class="s1">String outputFormat </span><span class="s2">= </span><span class="s3">&quot;Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location&quot;</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">Calendar</span><span class="s2">() {</span>
+        <span class="s1">events </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Event</span><span class="s2">&gt;();</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">Event addEvent</span><span class="s2">(</span><span class="s1">Event event</span><span class="s2">) {</span>
+        <span class="s1">events</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">event</span><span class="s2">);</span>
+
+        <span class="s0">return </span><span class="s1">event</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Event</span><span class="s2">&gt; </span><span class="s1">getEvents</span><span class="s2">() {</span>
+        <span class="s0">return this</span><span class="s2">.</span><span class="s1">events</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">File generateCSV</span><span class="s2">() {</span>
+        <span class="s1">File outputFile </span><span class="s2">= </span><span class="s0">new </span><span class="s1">File</span><span class="s2">(</span><span class="s1">OUTPUT_FILE_NAME</span><span class="s2">);</span>
+
+        <span class="s0">try </span><span class="s2">(</span><span class="s1">PrintWriter writer </span><span class="s2">= </span><span class="s0">new </span><span class="s1">PrintWriter</span><span class="s2">(</span><span class="s1">outputFile</span><span class="s2">);) {</span>
+            <span class="s1">writer</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">outputFormat</span><span class="s2">); </span><span class="s4">// header</span>
+
+            <span class="s0">for</span><span class="s2">(</span><span class="s1">Event event </span><span class="s2">: </span><span class="s1">events</span><span class="s2">) {</span>
+                <span class="s1">writer</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">event</span><span class="s2">.</span><span class="s1">convertToCSVLine</span><span class="s2">());</span>
+            <span class="s2">}</span>
+
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException ioe</span><span class="s2">) {</span>
+            <span class="s1">ioe</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+        <span class="s2">}</span>
+
+        <span class="s4">// print out resulting .csv file contents to see if it actually worked</span>
+<span class="s4">//        try {</span>
+<span class="s4">//            Files.lines(outputFile.toPath())</span>
+<span class="s4">//                    .forEach(System.out::println);</span>
+<span class="s4">//        } catch (IOException e) {</span>
+<span class="s4">//            throw new RuntimeException(e);</span>
+<span class="s4">//        }</span>
+
+        <span class="s0">return </span><span class="s1">outputFile</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

@@ -16,12 +16,12 @@ import org.example.MODEL.Event.Event;
 public class UI {
     private JPanel panel1;
     private JPanel topPanel;
-    private JLabel titlePane;
-    private JTextArea errorBox;
     private JPanel panelLabel;
 
     private JButton addEventButton;
     private JTextArea assesmentText;
+    private JTextArea spacerLeftPane;
+    private JLabel titlePane;
 
     private JButton testButton;
     private JButton assignmentButton;
@@ -44,14 +44,16 @@ public class UI {
     private JLabel labelName;
     private JButton enterButton;
 
-    private JTextArea resultingFileTextArea;
     private JPanel rightPanel;
     private JPanel eventListPanel;
     private JButton generateButton;
+    private JPanel leftPanel;
+    private JTextArea assesmentDetailsTextArea;
 
     // event details
     private int eventType = -1;
     private String day, month, year, weight, name, description;
+    JLabel background = new JLabel(new ImageIcon("bg.png"));
 
     // event display
     private Calendar calendar = new Calendar();
@@ -86,10 +88,12 @@ public class UI {
         labelDescription.setVisible(false);
         labelName.setVisible(false);
         enterButton.setVisible(false);
+        rightPanel.setVisible(false);
+        assesmentDetailsTextArea.setVisible(false);
 
         // editing UI
-        titlePane.setFont(new Font("Segoe UI", Font.BOLD, 40));
-        titlePane.setForeground(new Color(40, 60, 90));
+        spacerLeftPane.setFont(new Font("Segoe UI", Font.BOLD, 40));
+        spacerLeftPane.setForeground(new Color(40, 60, 90));
 
         // make the labels stack on top of each other
         eventListPanel.setLayout(new BoxLayout(eventListPanel, BoxLayout.Y_AXIS));
@@ -114,6 +118,9 @@ public class UI {
 
                 if (validInput) {
                     listEvents();
+
+                    leftPanel.setVisible(false);
+                    rightPanel.setVisible(true);
                 }
             }
         });
@@ -145,6 +152,7 @@ public class UI {
     // sets the event types to visible --------------------------------------------------------------------------------
     private void showEventTypes() {
         assesmentText.setVisible(true);
+        assesmentDetailsTextArea.setVisible(true);
         testButton.setVisible(true);
         quizButton.setVisible(true);
         labButton.setVisible(true);
@@ -226,7 +234,7 @@ public class UI {
         otherButton.setForeground(new Color(55, 75, 157));
 
         // change the current button colour
-        button.setForeground(Color.RED);
+        button.setForeground(Color.BLUE);
     }
 
     // handle detail input --------------------------------------------------------------------------------------------
@@ -248,6 +256,10 @@ public class UI {
         }
         else if (day.length() == 0 || month.length() == 0 || year.length() == 0 || weight.length() == 0 || name.length() == 0) {
             JOptionPane.showMessageDialog(null, "Empty Field Detected");
+            validInput = false;
+        }
+        else if (calendar.dupeExists(name)) {
+            JOptionPane.showMessageDialog(null, "There already exists an event named '" + name + "'");
             validInput = false;
         }
         else if (hasLetters(day) || hasLetters(month) || hasLetters(year) || hasLetters(weight)) {
@@ -304,14 +316,6 @@ public class UI {
 
     // list out events with delete button on right panel --------------------------------------------------------------
     private void listEvents() {
-        JOptionPane.showMessageDialog(null, String.format("""
-                            Your Assesment Type: %s
-                            Date: %s %s %s
-                            Weight: %s
-                            Title: %s
-                            Description: %s
-                            """, eventType, day, month, year, weight, name, description));
-
         // send raw data to back end
         int[] dateArray  = {Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year)};
 
@@ -324,36 +328,59 @@ public class UI {
 
         // add JTextArea to the rightPanel
         JTextArea newLabel = new JTextArea(eventText);
-        newLabel.setEditable(false);  // Stop the user from typing in it
-        newLabel.setOpaque(false);    // Make the background transparent to blend with the panel
-        newLabel.setFocusable(false); // Prevent the blinking text cursor from appearing
-        newLabel.setBorder(null);
-        Dimension prefSize = newLabel.getPreferredSize();
-        newLabel.setMaximumSize(new Dimension(Integer.MAX_VALUE, prefSize.height));
+        JButton removeEventButton = new JButton("\u274C");
 
-        eventListPanel.add(newLabel);
+        // make removeEventButton a perfect square and remove its background
+        removeEventButton.setMargin(new Insets(0, 0, 0, 0));
+        removeEventButton.setOpaque(false);
+        removeEventButton.setContentAreaFilled(false);
+        removeEventButton.setBorderPainted(false);
+        removeEventButton.setFocusPainted(false);
+
+        newLabel.setForeground(Color.WHITE);
+        newLabel.setEditable(false);  // Stop the user from typing
+        newLabel.setOpaque(false);    // Make the background transparent
+        newLabel.setFocusable(false); // Stop blinking text cursor from appearing
+        newLabel.setBorder(null);
+
+        // make a row JPanel to be placed inside the eventListPanel
+        // to accommodate the text + removeEventButton
+        JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 4));
+        rowPanel.setOpaque(false); // Make it transparent to blend with your background
+
+        // Add the text area and button to the horizontal row panel
+        rowPanel.add(newLabel);
+        rowPanel.add(removeEventButton);
+        rowPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, rowPanel.getPreferredSize().height));
+
+        // Add the grouped row to the main event list panel
+        eventListPanel.add(rowPanel);
 
         // redraw panel
         eventListPanel.revalidate();
         eventListPanel.repaint();
+
+        // button for deleting event item from rightPanel
+        removeEventButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // delete from calender
+                calendar.deleteEvent(eventLabel.getName());
+
+                // delete from view
+                eventListPanel.remove(rowPanel);
+
+                // redraw panel
+                eventListPanel.revalidate();
+                eventListPanel.repaint();
+            }
+        });
     }
-
-
-
-
-
-
-
-
-
 
     // main method ----------------------------------------------------------------------------------------------------
     public static void main(String[] args) {
         new UI();
     }
 
-    // TODO: input cleansing should be performed when the user clicks "submit" to a new event
-    // TODO: day month year are strings, allow for int output
-    // TODO: do not allow eventType == -1
-    // TODO: ensure weight is between 0 - 100
+    // TODO: add comments
 }
