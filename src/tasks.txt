@@ -1,0 +1,18 @@
+Task: take simple user input and convert info into a Google Calendar compatible .csv file.
+
+Flow: enter input -> convert input into proper format -> add converted input to output .csv file -> return .csv
+
+input format:
+    name,subject,date,weight,description
+input example:
+    assignment 1,comp1600,mar102026,0.10,this is the description
+    quiz 3,comp2080,mar112026,0.07,this is the description
+    quiz 4,comp2080,mar112026,0.1,this is the description
+    final exam,comp1020,mar012026,0.50,Study hard.
+
+output format:
+    Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location
+output example:
+    comp1600 assignment 1,03/10/2026,,03/10/2026,,True,Worth 10% of final grade.,
+    comp2080 quiz,03/11/2026,,03/11/2026,,True,Worth 7% of final grade.,
+    comp1020 exam,03/01/2026,,03/01/2026,,True,Worth 50% of final grade. Study hard.,
