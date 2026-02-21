@@ -1,6 +1,6 @@
 ---
 title: 2026 Hackathon Calendar (?)
-authors: Edrielle Mateo, Bradley Barrientos, Lloyd Bernabe, Abbinhav S
+authors: Edrielle Mateo, Bradley Barrientos, Lloyd Bernabe, Abbinhav Sehgal
 date: Feb 20-21, 2026
 ---
 
