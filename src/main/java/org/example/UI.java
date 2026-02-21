@@ -47,7 +47,6 @@ public class UI {
     private JTextArea resultingFileTextArea;
     private JPanel rightPanel;
     private JPanel eventListPanel;
-    private JScrollBar scrollBar1;
     private JButton generateButton;
 
     // event details

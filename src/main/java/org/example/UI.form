@@ -34,7 +34,7 @@
             </constraints>
             <properties>
               <background color="-4336903"/>
-              <font name="Beirut" size="20"/>
+              <font name="DIN Condensed" size="20"/>
               <foreground color="-13153379"/>
               <text value="Add Class"/>
             </properties>
@@ -58,6 +58,7 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <background color="-4336903"/>
                   <font name="Beirut" size="14" style="0"/>
                   <foreground color="-13153379"/>
                   <text value="Test"/>
@@ -72,7 +73,8 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <font name="Beirut"/>
+                  <background color="-4336903"/>
+                  <font name="DIN Condensed" size="18"/>
                   <foreground color="-13153379"/>
                   <text value="Exam"/>
                 </properties>
@@ -86,6 +88,7 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <background color="-4336903"/>
                   <font name="Beirut"/>
                   <foreground color="-13153379"/>
                   <text value="Other"/>
@@ -100,6 +103,7 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <background color="-4336903"/>
                   <font name="Beirut"/>
                   <foreground color="-13153379"/>
                   <text value="Quiz"/>
@@ -114,6 +118,7 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <background color="-4336903"/>
                   <font name="Beirut"/>
                   <foreground color="-13153379"/>
                   <text value="Lab"/>
@@ -128,7 +133,8 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <font name="Beirut"/>
+                  <background color="-4336903"/>
+                  <font name="DIN Condensed" size="18"/>
                   <foreground color="-13153379"/>
                   <text value="Assignment"/>
                 </properties>
@@ -262,7 +268,7 @@
             </constraints>
             <properties>
               <background color="-8284945"/>
-              <font name="Beirut" size="20" style="0"/>
+              <font name="Songti SC" size="20" style="0"/>
               <foreground color="-1"/>
               <text value="Select Assesment Type" noi18n="true"/>
             </properties>
@@ -334,14 +340,14 @@
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Beirut" size="48" style="1"/>
+              <font name="Andale Mono" size="48" style="1"/>
               <foreground color="-1"/>
               <text value="Schedule Planner"/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="b84e8" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="b84e8" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
@@ -404,28 +410,27 @@
                   <text value="Resulting File"/>
                 </properties>
               </component>
-              <grid id="a931" binding="eventListPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+              <scrollpane id="6862e">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="400" height="1000"/>
-                    <maximum-size width="700" height="1000"/>
-                  </grid>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties>
-                  <background color="-13153379"/>
-                  <font name="Beirut" size="20" style="1"/>
-                </properties>
+                <properties/>
                 <border type="none"/>
-                <children/>
-              </grid>
+                <children>
+                  <grid id="a931" binding="eventListPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                    <constraints/>
+                    <properties>
+                      <background color="-13153379"/>
+                      <font name="Beirut" size="20" style="1"/>
+                      <foreground color="-13153379"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
+              </scrollpane>
             </children>
           </grid>
-          <component id="aa70b" class="javax.swing.JScrollBar" binding="scrollBar1" default-binding="true">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
           <component id="53754" class="javax.swing.JLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
