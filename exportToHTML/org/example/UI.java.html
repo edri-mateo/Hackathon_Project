@@ -1,0 +1,393 @@
+<html>
+<head>
+<title>UI.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #2aacb8;}
+.s5 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+UI.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionListener</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">File</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">nio</span><span class="s2">.</span><span class="s1">file</span><span class="s2">.</span><span class="s1">Files</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">nio</span><span class="s2">.</span><span class="s1">file</span><span class="s2">.</span><span class="s1">StandardCopyOption</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">IOException</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">MODEL</span><span class="s2">.</span><span class="s1">Calendar</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">MODEL</span><span class="s2">.</span><span class="s1">Event</span><span class="s2">.</span><span class="s1">Event</span><span class="s2">;</span>
+
+<span class="s3">// UI Class -----------------------------------------------------------------------------------------------------------</span>
+<span class="s0">public class </span><span class="s1">UI </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">JPanel panel1</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JPanel topPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JLabel titlePane</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JTextArea errorBox</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JPanel panelLabel</span><span class="s2">;</span>
+
+    <span class="s0">private </span><span class="s1">JButton addEventButton</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JTextArea assesmentText</span><span class="s2">;</span>
+
+    <span class="s0">private </span><span class="s1">JButton testButton</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JButton assignmentButton</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JButton examButton</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JButton quizButton</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JButton labButton</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JButton otherButton</span><span class="s2">;</span>
+
+    <span class="s0">private </span><span class="s1">JTextField dayInput</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JTextField monthInput</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JTextField yearInput</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JTextField weightInput</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JTextField nameInput</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JTextField descriptionInput</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JLabel labelDate</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JLabel labelMonth</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JLabel labelYear</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JLabel labelWeight</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JLabel labelDescription</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JLabel labelName</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JButton enterButton</span><span class="s2">;</span>
+
+    <span class="s0">private </span><span class="s1">JTextArea resultingFileTextArea</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JPanel rightPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JPanel eventListPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JButton generateButton</span><span class="s2">;</span>
+
+    <span class="s3">// event details</span>
+    <span class="s0">private int </span><span class="s1">eventType </span><span class="s2">= -</span><span class="s4">1</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String day</span><span class="s2">, </span><span class="s1">month</span><span class="s2">, </span><span class="s1">year</span><span class="s2">, </span><span class="s1">weight</span><span class="s2">, </span><span class="s1">name</span><span class="s2">, </span><span class="s1">description</span><span class="s2">;</span>
+
+    <span class="s3">// event display</span>
+    <span class="s0">private </span><span class="s1">Calendar calendar </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Calendar</span><span class="s2">();</span>
+
+    <span class="s3">// UI Constructor -------------------------------------------------------------------------------------------------</span>
+    <span class="s0">public </span><span class="s1">UI</span><span class="s2">() {</span>
+        <span class="s1">JFrame frame </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JFrame</span><span class="s2">(</span><span class="s5">&quot;UI&quot;</span><span class="s2">);</span>
+        <span class="s1">frame</span><span class="s2">.</span><span class="s1">setContentPane</span><span class="s2">(</span><span class="s0">this</span><span class="s2">.</span><span class="s1">panel1</span><span class="s2">);</span>
+        <span class="s1">frame</span><span class="s2">.</span><span class="s1">setDefaultCloseOperation</span><span class="s2">(</span><span class="s1">JFrame</span><span class="s2">.</span><span class="s1">EXIT_ON_CLOSE</span><span class="s2">);</span>
+        <span class="s1">frame</span><span class="s2">.</span><span class="s1">setExtendedState</span><span class="s2">(</span><span class="s1">Frame</span><span class="s2">.</span><span class="s1">MAXIMIZED_BOTH</span><span class="s2">);</span>
+        <span class="s1">frame</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">();</span>
+        <span class="s1">frame</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+
+        <span class="s3">// set all event detail buttons and header to hidden at first</span>
+        <span class="s1">assesmentText</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">testButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">quizButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">labButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">examButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">assignmentButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">otherButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">dayInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">monthInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">yearInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">weightInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">nameInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">descriptionInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">labelDate</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">labelMonth</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">labelYear</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">labelWeight</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">labelDescription</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">labelName</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">enterButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+
+        <span class="s3">// editing UI</span>
+        <span class="s1">titlePane</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s5">&quot;Segoe UI&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s4">40</span><span class="s2">));</span>
+        <span class="s1">titlePane</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s4">40</span><span class="s2">, </span><span class="s4">60</span><span class="s2">, </span><span class="s4">90</span><span class="s2">));</span>
+
+        <span class="s3">// make the labels stack on top of each other</span>
+        <span class="s1">eventListPanel</span><span class="s2">.</span><span class="s1">setLayout</span><span class="s2">(</span><span class="s0">new </span><span class="s1">BoxLayout</span><span class="s2">(</span><span class="s1">eventListPanel</span><span class="s2">, </span><span class="s1">BoxLayout</span><span class="s2">.</span><span class="s1">Y_AXIS</span><span class="s2">));</span>
+
+        <span class="s3">// initialize event types</span>
+        <span class="s1">selectEventTypes</span><span class="s2">();</span>
+
+        <span class="s3">// displays the event types</span>
+        <span class="s1">addEventButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ActionListener</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+                <span class="s1">showEventTypes</span><span class="s2">();</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+
+        <span class="s3">// sends raw data to backend from processing</span>
+        <span class="s1">enterButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ActionListener</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+                <span class="s1">setDetails</span><span class="s2">();</span>
+                <span class="s0">boolean </span><span class="s1">validInput </span><span class="s2">= </span><span class="s1">sanitizeInput</span><span class="s2">();</span>
+
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">validInput</span><span class="s2">) {</span>
+                    <span class="s1">listEvents</span><span class="s2">();</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+
+        <span class="s3">// generates a file to be saved</span>
+        <span class="s1">generateButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ActionListener</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+                <span class="s1">File outputFile </span><span class="s2">= </span><span class="s1">calendar</span><span class="s2">.</span><span class="s1">generateCSV</span><span class="s2">();</span>
+                <span class="s1">JFileChooser fileChooser </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JFileChooser</span><span class="s2">();</span>
+                <span class="s1">fileChooser</span><span class="s2">.</span><span class="s1">setDialogTitle</span><span class="s2">(</span><span class="s5">&quot;Specify a file to save&quot;</span><span class="s2">);</span>
+                <span class="s1">fileChooser</span><span class="s2">.</span><span class="s1">setSelectedFile</span><span class="s2">(</span><span class="s0">new </span><span class="s1">File</span><span class="s2">(</span><span class="s5">&quot;new_calendar.csv&quot;</span><span class="s2">));</span>
+
+                <span class="s0">int </span><span class="s1">userSelection </span><span class="s2">= </span><span class="s1">fileChooser</span><span class="s2">.</span><span class="s1">showSaveDialog</span><span class="s2">(</span><span class="s1">panel1</span><span class="s2">);</span>
+
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">userSelection </span><span class="s2">== </span><span class="s1">JFileChooser</span><span class="s2">.</span><span class="s1">APPROVE_OPTION</span><span class="s2">) {</span>
+                    <span class="s1">File destinationFile </span><span class="s2">= </span><span class="s1">fileChooser</span><span class="s2">.</span><span class="s1">getSelectedFile</span><span class="s2">();</span>
+                    <span class="s0">try </span><span class="s2">{</span>
+                        <span class="s1">Files</span><span class="s2">.</span><span class="s1">copy</span><span class="s2">(</span><span class="s1">outputFile</span><span class="s2">.</span><span class="s1">toPath</span><span class="s2">(), </span><span class="s1">destinationFile</span><span class="s2">.</span><span class="s1">toPath</span><span class="s2">(), </span><span class="s1">StandardCopyOption</span><span class="s2">.</span><span class="s1">REPLACE_EXISTING</span><span class="s2">);</span>
+                        <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;File saved successfully!&quot;</span><span class="s2">);</span>
+                    <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException ioe</span><span class="s2">) {</span>
+                        <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Error saving file: &quot; </span><span class="s2">+ </span><span class="s1">ioe</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// sets the event types to visible --------------------------------------------------------------------------------</span>
+    <span class="s0">private void </span><span class="s1">showEventTypes</span><span class="s2">() {</span>
+        <span class="s1">assesmentText</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">testButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">quizButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">labButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">examButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">assignmentButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">otherButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">dayInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">monthInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">yearInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">weightInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">nameInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">descriptionInput</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">labelDate</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">labelMonth</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">labelYear</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">labelWeight</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">labelDescription</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">labelName</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">enterButton</span><span class="s2">.</span><span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// set type of event ----------------------------------------------------------------------------------------------</span>
+    <span class="s3">// -1 = invalid event</span>
+    <span class="s3">// 0 = test</span>
+    <span class="s3">// 1 = assignment</span>
+    <span class="s3">// 2 = exam</span>
+    <span class="s3">// 3 = quiz</span>
+    <span class="s3">// 4 = lab</span>
+    <span class="s3">// 5 = other</span>
+    <span class="s0">private void </span><span class="s1">selectEventTypes</span><span class="s2">() {</span>
+        <span class="s1">testButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ActionListener</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+                <span class="s1">setEventType</span><span class="s2">(</span><span class="s4">0</span><span class="s2">, </span><span class="s1">testButton</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+        <span class="s1">assignmentButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ActionListener</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+                <span class="s1">setEventType</span><span class="s2">(</span><span class="s4">1</span><span class="s2">, </span><span class="s1">assignmentButton</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+        <span class="s1">examButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ActionListener</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+                <span class="s1">setEventType</span><span class="s2">(</span><span class="s4">2</span><span class="s2">, </span><span class="s1">examButton</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+        <span class="s1">quizButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ActionListener</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+                <span class="s1">setEventType</span><span class="s2">(</span><span class="s4">3</span><span class="s2">, </span><span class="s1">quizButton</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+        <span class="s1">labButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ActionListener</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+                <span class="s1">setEventType</span><span class="s2">(</span><span class="s4">4</span><span class="s2">, </span><span class="s1">labButton</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+        <span class="s1">otherButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ActionListener</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+                <span class="s1">setEventType</span><span class="s2">(</span><span class="s4">5</span><span class="s2">, </span><span class="s1">otherButton</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// display event type</span>
+    <span class="s0">private void </span><span class="s1">setEventType</span><span class="s2">(</span><span class="s0">int </span><span class="s1">type</span><span class="s2">, </span><span class="s1">JButton button</span><span class="s2">) {</span>
+        <span class="s1">eventType </span><span class="s2">= </span><span class="s1">type</span><span class="s2">;</span>
+
+        <span class="s3">// reset colour of every button</span>
+        <span class="s1">testButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s4">55</span><span class="s2">, </span><span class="s4">75</span><span class="s2">, </span><span class="s4">157</span><span class="s2">));</span>
+        <span class="s1">assignmentButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s4">55</span><span class="s2">, </span><span class="s4">75</span><span class="s2">, </span><span class="s4">157</span><span class="s2">));</span>
+        <span class="s1">examButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s4">55</span><span class="s2">, </span><span class="s4">75</span><span class="s2">, </span><span class="s4">157</span><span class="s2">));</span>
+        <span class="s1">quizButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s4">55</span><span class="s2">, </span><span class="s4">75</span><span class="s2">, </span><span class="s4">157</span><span class="s2">));</span>
+        <span class="s1">labButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s4">55</span><span class="s2">, </span><span class="s4">75</span><span class="s2">, </span><span class="s4">157</span><span class="s2">));</span>
+        <span class="s1">otherButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s4">55</span><span class="s2">, </span><span class="s4">75</span><span class="s2">, </span><span class="s4">157</span><span class="s2">));</span>
+
+        <span class="s3">// change the current button colour</span>
+        <span class="s1">button</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">RED</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// handle detail input --------------------------------------------------------------------------------------------</span>
+    <span class="s0">private void </span><span class="s1">setDetails</span><span class="s2">() {</span>
+        <span class="s1">day </span><span class="s2">= </span><span class="s1">dayInput</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+        <span class="s1">month </span><span class="s2">= </span><span class="s1">monthInput</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+        <span class="s1">year </span><span class="s2">= </span><span class="s1">yearInput</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+        <span class="s1">weight </span><span class="s2">= </span><span class="s1">weightInput</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+        <span class="s1">name </span><span class="s2">= </span><span class="s1">nameInput</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+        <span class="s1">description </span><span class="s2">= </span><span class="s1">descriptionInput</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// methods for input sanitation -----------------------------------------------------------------------------------</span>
+    <span class="s0">private boolean </span><span class="s1">sanitizeInput</span><span class="s2">() {</span>
+        <span class="s0">boolean </span><span class="s1">validInput </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">day </span><span class="s2">== </span><span class="s0">null </span><span class="s2">|| </span><span class="s1">month </span><span class="s2">== </span><span class="s0">null </span><span class="s2">|| </span><span class="s1">year </span><span class="s2">== </span><span class="s0">null </span><span class="s2">|| </span><span class="s1">weight </span><span class="s2">== </span><span class="s0">null </span><span class="s2">|| </span><span class="s1">name </span><span class="s2">== </span><span class="s0">null </span><span class="s2">|| </span><span class="s1">eventType </span><span class="s2">== -</span><span class="s4">1</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Empty Field Detected&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">day</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() == </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">month</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() == </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">year</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() == </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">weight</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() == </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">name</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() == </span><span class="s4">0</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Empty Field Detected&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">hasLetters</span><span class="s2">(</span><span class="s1">day</span><span class="s2">) || </span><span class="s1">hasLetters</span><span class="s2">(</span><span class="s1">month</span><span class="s2">) || </span><span class="s1">hasLetters</span><span class="s2">(</span><span class="s1">year</span><span class="s2">) || </span><span class="s1">hasLetters</span><span class="s2">(</span><span class="s1">weight</span><span class="s2">)) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Day, Month, Year, and Weight must only be digits&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">day</span><span class="s2">) &lt; </span><span class="s4">1 </span><span class="s2">|| </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">month</span><span class="s2">) &lt; </span><span class="s4">1 </span><span class="s2">|| </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">year</span><span class="s2">) &lt; </span><span class="s4">1</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Day, Month, and Year cannot be less than 1&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">month</span><span class="s2">) &gt; </span><span class="s4">12</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Month cannot be greater than 12&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">year</span><span class="s2">) &gt; </span><span class="s4">2200 </span><span class="s2">|| </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">year</span><span class="s2">) &lt; </span><span class="s4">1000</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Invalid Year&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">day</span><span class="s2">) &gt; </span><span class="s4">31</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Day cannot be bigger than 31&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if </span><span class="s2">((</span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">month</span><span class="s2">) == </span><span class="s4">2 </span><span class="s2">||</span>
+                <span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">month</span><span class="s2">) == </span><span class="s4">4 </span><span class="s2">||</span>
+                <span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">month</span><span class="s2">) == </span><span class="s4">6 </span><span class="s2">||</span>
+                <span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">month</span><span class="s2">) == </span><span class="s4">9 </span><span class="s2">||</span>
+                <span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">month</span><span class="s2">) == </span><span class="s4">11</span><span class="s2">) &amp;&amp;</span>
+            <span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">day</span><span class="s2">) &gt; </span><span class="s4">30</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Day cannot be bigger than 30&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">month</span><span class="s2">) == </span><span class="s4">2 </span><span class="s2">&amp;&amp;</span>
+            <span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">day</span><span class="s2">) &gt; </span><span class="s4">28</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Day cannot be bigger than 28&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">weight</span><span class="s2">) &lt; </span><span class="s4">1 </span><span class="s2">|| </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">weight</span><span class="s2">) &gt; </span><span class="s4">100</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s5">&quot;Weight must be within 1 - 100&quot;</span><span class="s2">);</span>
+            <span class="s1">validInput </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+
+        <span class="s0">return </span><span class="s1">validInput</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">private boolean </span><span class="s1">hasLetters</span><span class="s2">(</span><span class="s1">String s</span><span class="s2">) {</span>
+        <span class="s0">boolean </span><span class="s1">returnFlag </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">s</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() &amp;&amp; !</span><span class="s1">returnFlag</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s0">if </span><span class="s2">(!</span><span class="s1">Character</span><span class="s2">.</span><span class="s1">isDigit</span><span class="s2">(</span><span class="s1">s</span><span class="s2">.</span><span class="s1">charAt</span><span class="s2">(</span><span class="s1">i</span><span class="s2">))) {</span>
+                <span class="s1">returnFlag </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+        <span class="s0">return </span><span class="s1">returnFlag</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// list out events with delete button on right panel --------------------------------------------------------------</span>
+    <span class="s0">private void </span><span class="s1">listEvents</span><span class="s2">() {</span>
+        <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s5">&quot;&quot;&quot; 
+                            Your Assesment Type: %s 
+                            Date: %s %s %s 
+                            Weight: %s 
+                            Title: %s 
+                            Description: %s 
+                            &quot;&quot;&quot;</span><span class="s2">, </span><span class="s1">eventType</span><span class="s2">, </span><span class="s1">day</span><span class="s2">, </span><span class="s1">month</span><span class="s2">, </span><span class="s1">year</span><span class="s2">, </span><span class="s1">weight</span><span class="s2">, </span><span class="s1">name</span><span class="s2">, </span><span class="s1">description</span><span class="s2">));</span>
+
+        <span class="s3">// send raw data to back end</span>
+        <span class="s0">int</span><span class="s2">[] </span><span class="s1">dateArray  </span><span class="s2">= {</span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">day</span><span class="s2">), </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">month</span><span class="s2">), </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">year</span><span class="s2">)};</span>
+
+        <span class="s3">// create the currently submitted event object</span>
+        <span class="s1">Event event </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Event</span><span class="s2">(</span><span class="s1">eventType</span><span class="s2">, </span><span class="s1">name</span><span class="s2">, </span><span class="s1">dateArray</span><span class="s2">, </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">weight</span><span class="s2">), </span><span class="s1">description</span><span class="s2">);</span>
+
+        <span class="s3">// add to calendar</span>
+        <span class="s1">Event eventLabel </span><span class="s2">= </span><span class="s1">calendar</span><span class="s2">.</span><span class="s1">addEvent</span><span class="s2">(</span><span class="s1">event</span><span class="s2">);</span>
+        <span class="s1">String eventText </span><span class="s2">= </span><span class="s1">eventLabel</span><span class="s2">.</span><span class="s1">getEventInfo</span><span class="s2">();</span>
+
+        <span class="s3">// add JTextArea to the rightPanel</span>
+        <span class="s1">JTextArea newLabel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JTextArea</span><span class="s2">(</span><span class="s1">eventText</span><span class="s2">);</span>
+        <span class="s1">JButton removeEventButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s5">&quot;</span><span class="s0">\u274C</span><span class="s5">&quot;</span><span class="s2">);</span>
+
+        <span class="s3">// make removeEventButton a perfect square and remove its background</span>
+        <span class="s1">removeEventButton</span><span class="s2">.</span><span class="s1">setMargin</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Insets</span><span class="s2">(</span><span class="s4">0</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s4">0</span><span class="s2">));</span>
+        <span class="s1">removeEventButton</span><span class="s2">.</span><span class="s1">setOpaque</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">removeEventButton</span><span class="s2">.</span><span class="s1">setContentAreaFilled</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">removeEventButton</span><span class="s2">.</span><span class="s1">setBorderPainted</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">removeEventButton</span><span class="s2">.</span><span class="s1">setFocusPainted</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+
+        <span class="s1">newLabel</span><span class="s2">.</span><span class="s1">setEditable</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);  </span><span class="s3">// Stop the user from typing</span>
+        <span class="s1">newLabel</span><span class="s2">.</span><span class="s1">setOpaque</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);    </span><span class="s3">// Make the background transparent</span>
+        <span class="s1">newLabel</span><span class="s2">.</span><span class="s1">setFocusable</span><span class="s2">(</span><span class="s0">false</span><span class="s2">); </span><span class="s3">// Stop blinking text cursor from appearing</span>
+        <span class="s1">newLabel</span><span class="s2">.</span><span class="s1">setBorder</span><span class="s2">(</span><span class="s0">null</span><span class="s2">);</span>
+
+        <span class="s3">// make a row JPanel to be placed inside of the eventListPanel</span>
+        <span class="s3">// to accommodate the text + removeEventButton</span>
+        <span class="s1">JPanel rowPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JPanel</span><span class="s2">(</span><span class="s0">new </span><span class="s1">FlowLayout</span><span class="s2">(</span><span class="s1">FlowLayout</span><span class="s2">.</span><span class="s1">CENTER</span><span class="s2">, </span><span class="s4">10</span><span class="s2">, </span><span class="s4">4</span><span class="s2">));</span>
+        <span class="s1">rowPanel</span><span class="s2">.</span><span class="s1">setOpaque</span><span class="s2">(</span><span class="s0">false</span><span class="s2">); </span><span class="s3">// Make it transparent to blend with your background</span>
+
+        <span class="s3">// Add the text area and button to the horizontal row panel</span>
+        <span class="s1">rowPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">newLabel</span><span class="s2">);</span>
+        <span class="s1">rowPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">removeEventButton</span><span class="s2">);</span>
+        <span class="s1">rowPanel</span><span class="s2">.</span><span class="s1">setMaximumSize</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Dimension</span><span class="s2">(</span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">MAX_VALUE</span><span class="s2">, </span><span class="s1">rowPanel</span><span class="s2">.</span><span class="s1">getPreferredSize</span><span class="s2">().</span><span class="s1">height</span><span class="s2">));</span>
+
+        <span class="s3">// Add the grouped row to the main event list panel</span>
+        <span class="s1">eventListPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">rowPanel</span><span class="s2">);</span>
+
+        <span class="s3">// redraw panel</span>
+        <span class="s1">eventListPanel</span><span class="s2">.</span><span class="s1">revalidate</span><span class="s2">();</span>
+        <span class="s1">eventListPanel</span><span class="s2">.</span><span class="s1">repaint</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+
+
+
+
+
+
+
+
+
+    <span class="s3">// main method ----------------------------------------------------------------------------------------------------</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s0">new </span><span class="s1">UI</span><span class="s2">();</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

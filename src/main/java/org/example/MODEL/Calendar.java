@@ -24,6 +24,26 @@ public class Calendar {
         return event;
     }
 
+    public void deleteEvent(String name) {
+        boolean foundElement = false;
+        for (int i = 0; i < events.size() && !foundElement; i++) {
+            if (events.get(i).getName().equals(name)) {
+                events.remove(i);
+                foundElement = true;
+            }
+        }
+    }
+
+    public boolean dupeExists(String name) {
+        boolean foundDupe = false;
+        for (int i = 0; i < events.size() && !foundDupe; i++) {
+            if (events.get(i).getName().equals(name)) {
+                foundDupe = true;
+            }
+        }
+        return foundDupe;
+    }
+
     public ArrayList<Event> getEvents() {
         return this.events;
     }
