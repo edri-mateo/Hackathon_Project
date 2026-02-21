@@ -37,10 +37,10 @@
               <background color="-4336903"/>
               <font name="DIN Condensed" size="20"/>
               <foreground color="-13153379"/>
-              <text value="Add Assesment"/>
+              <text value="Add Assessment"/>
             </properties>
           </component>
-          <grid id="55dcf" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="55dcf" layout-manager="GridLayoutManager" row-count="4" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="7" column="0" row-span="1" col-span="6" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -166,7 +166,7 @@
                   <background color="-8284945"/>
                   <font name="Songti SC" size="20"/>
                   <foreground color="-1"/>
-                  <text value="Assesment Details"/>
+                  <text value="Assessment Details"/>
                 </properties>
               </component>
               <vspacer id="beed6">
@@ -179,13 +179,10 @@
               </vspacer>
             </children>
           </grid>
-          <grid id="e988d" binding="panelLabel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="e988d" binding="panelLabel" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="8" column="0" row-span="1" col-span="6" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="10" height="10"/>
-                <maximum-size width="10" height="10"/>
-              </grid>
+              <grid row="8" column="0" row-span="1" col-span="6" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-4336903"/>
@@ -196,7 +193,7 @@
             <children>
               <component id="55b27" class="javax.swing.JTextField" binding="dayInput">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -206,7 +203,7 @@
               </component>
               <component id="222c7" class="javax.swing.JTextField" binding="weightInput">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -216,7 +213,7 @@
               </component>
               <component id="8df0c" class="javax.swing.JLabel" binding="labelDate">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="DIN Condensed" size="18"/>
@@ -226,7 +223,7 @@
               </component>
               <component id="3e480" class="javax.swing.JLabel" binding="labelWeight">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="DIN Condensed" size="18"/>
@@ -236,7 +233,7 @@
               </component>
               <component id="34315" class="javax.swing.JLabel" binding="labelMonth">
                 <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="DIN Condensed" size="18"/>
@@ -246,7 +243,7 @@
               </component>
               <component id="e9438" class="javax.swing.JTextField" binding="monthInput">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -256,7 +253,7 @@
               </component>
               <component id="656bd" class="javax.swing.JLabel" binding="labelYear">
                 <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="DIN Condensed" size="18"/>
@@ -266,7 +263,7 @@
               </component>
               <component id="b397b" class="javax.swing.JTextField" binding="yearInput">
                 <constraints>
-                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -276,7 +273,7 @@
               </component>
               <component id="718f5" class="javax.swing.JTextField" binding="descriptionInput">
                 <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -286,7 +283,7 @@
               </component>
               <component id="b6ec" class="javax.swing.JLabel" binding="labelDescription">
                 <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="DIN Condensed" size="18"/>
@@ -296,7 +293,7 @@
               </component>
               <component id="86ed2" class="javax.swing.JLabel" binding="labelName">
                 <constraints>
-                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="DIN Condensed" size="18"/>
@@ -306,7 +303,7 @@
               </component>
               <component id="e4254" class="javax.swing.JTextField" binding="nameInput">
                 <constraints>
-                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="10" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="10" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="200" height="30"/>
                     <preferred-size width="150" height="-1"/>
                   </grid>
@@ -315,17 +312,6 @@
                   <text value=""/>
                 </properties>
               </component>
-              <grid id="8ba09" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-4336903"/>
-                </properties>
-                <border type="none"/>
-                <children/>
-              </grid>
             </children>
           </grid>
           <component id="3b001" class="javax.swing.JTextArea" binding="assesmentText">
@@ -336,7 +322,7 @@
               <background color="-8284945"/>
               <font name="Songti SC" size="20" style="0"/>
               <foreground color="-1"/>
-              <text value="Select Assesment Type" noi18n="true"/>
+              <text value="Select Assessment Type" noi18n="true"/>
             </properties>
           </component>
           <grid id="23e4c" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
